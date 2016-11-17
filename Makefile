@@ -8,19 +8,19 @@ build:
 	docker build -t ${DOCKER_REPO}:testing .
 
 run:
-	docker-compose -f docker-compose.testing.yml up -d
+	docker-compose up -d
 
 logs:
-	docker-compose -f docker-compose.testing.yml logs
+	docker-compose logs
 
 clean: stop rm prune
 
 stop:
-	docker-compose -f docker-compose.testing.yml stop
+	docker-compose stop
 
 rm:
-	docker-compose -f docker-compose.testing.yml rm
+	docker-compose rm
 
 prune:
-	docker rm `docker ps -q -a --filter status=exited`
+	docker rm $(docker ps --filter=status=exited --filter=status=created -q)
 	docker rmi `docker images -q --filter "dangling=true"`

@@ -1,8 +1,0 @@
-yawik:
-    image: yawik/yawik:testing
-    container_name: yawik-container
-    environment:
-     - APPLICATION_ENV=develop
-    restart: always
-    ports:
-     - 8090:80
