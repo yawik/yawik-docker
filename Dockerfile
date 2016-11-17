@@ -19,6 +19,24 @@ RUN apt-get update && apt-get install -y \
 	&& pecl install mongo \
     	&& docker-php-ext-enable mongo
 
+# Allow .htaccess files in the Apache HTTP Server configuration.
+RUN cat /etc/apache2/sites-enabled/000-default.conf | while read line ; do \
+        case $line in \
+            '</VirtualHost>') \
+                echo '<Directory /var/www/html/YAWIK>' ; \
+                echo '    AllowOverride all' ; \
+                echo '</Directory>' ; \
+                echo "$line" ; \
+                ;; \
+            *) \
+                echo "$line" ; \
+                ;; \
+        esac ; \
+    done > /etc/apache2/sites-enabled/000-default.conf.new \
+    && mv /etc/apache2/sites-enabled/000-default.conf.new \
+        /etc/apache2/sites-enabled/000-default.conf
+
+
 RUN a2enmod rewrite
 
 # Download YAWIK from github
