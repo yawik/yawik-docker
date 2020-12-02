@@ -5,7 +5,7 @@ DOCKER_REPO = yawik/yawik
 all: build run logs
 
 build:
-	docker build -t ${DOCKER_REPO}:testing .
+	sudo docker build -t ${DOCKER_REPO}:testing .
 
 run:
 	docker-compose up -d
