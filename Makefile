@@ -8,7 +8,7 @@ build:
 	sudo docker build -t ${DOCKER_REPO}:testing .
 
 run:
-	docker-compose up -d
+	sudo docker-compose up -d
 
 logs:
 	docker-compose logs
