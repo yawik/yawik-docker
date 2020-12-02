@@ -2,8 +2,9 @@ docker image
 ============
 
 This docker image should help developes to quickly create a development
-enviroment. It uses the offical PHP (5-apache) und mongo images and clones the YAWIK
-repository into the php container.
+enviroment. It uses the [yawik/build](https://github.com/cbleek/yawik-docker-build)
+and runs a composer `create-project yawik/standard /var/www/html/YAWIK
+--no-dev`
 
 Requirements
 ------------
