@@ -7,6 +7,6 @@ web:
   volumes:
     - ./app:/app
 db:
-  image: mongo:3.2
+  image: mongo:4.2
   ports:
     - "27017:27017"
